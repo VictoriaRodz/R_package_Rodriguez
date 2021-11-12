@@ -1,0 +1,163 @@
+---
+title: "Project Two"
+output: html_document
+---
+## Due Nov. 12 at Midnight.
+## Complete this activity in your R_package_lastname project.
+
+Please have a look at [this](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2656.12373) paper. It explains the relationship between air temperature, butterfly emergence, and plant flowering.
+
+
+##  Phenology 
+
+Phenology is the study of when events happen in organisms' life cycles. For example, the first flowering of a plant for the year, or the emergence of forager bees. Typically, organisms take cues from their environment. Commonly, these are changes such as photoperiod (how much light there is per day) or temperature. 
+
+When organisms that rely on one another fall out of sync, it can be a problem. For example, if a plant starts to flower when the soil is warm enough, this will often occur after a period of warmer air temperatures because soil has a higher heat capacity than air. What happens to the bees when they emerge and don't find any food? This is called *ecological mismatch*. Originally described in 2004 by Winder and Schindler, ecological mismatch can mean that one or both species don't have their needs met by the environment. 
+
+What we're going to do today is look at some historical and present-day ecological data. What were the temperatures historically? And when did butterflies erupt from their cocoons? Butterflies need to be warm to incubate, exit the coccoon and go into flight. 
+
+Before trying the test, make sure you've read the Kharouba and Vellend paper and understand the hypotheses they were testing.
+
+# Project Two
+
+## Part One. 55 points.
+
+```{r}
+download.file(url = "https://raw.githubusercontent.com/Paleantology/GBIO153H/master/data/Butterfly_data.csv", destfile = "data/Butterfly_data.csv")
+download.file(url = "https://raw.githubusercontent.com/Paleantology/GBIO153H/master/data/Phenology_data.csv", destfile = "data/Phenology_data.csv")
+```
+
+## Next, let's read in both the butterfly and phenology datasets. 5 pts.
+
+```{r}
+# Code
+
+Butterfly <- read.csv("data/Butterfly_data.csv")
+Butterfly
+
+Phenology <- read.csv("data/Phenology_data.csv")
+Phenology
+
+```
+
+
+1) How many unique species of butterly are in the dataset? (5pts)
+
+
+```{r, eval=FALSE}
+Butterfly_1 <- Butterfly %>% 
+group_by(ButterflySpecies) %>%
+count(ButterflySpecies)
+Butterfly_1
+
+Answer: There are 12 unique species of butterflys in the dataset.
+```
+
+2) Check out the relationship between temperature and time. First, let's plot it. Choose an approriate plot type, and plot the year vs. temperature. (5 pts)
+```{r, eval = FALSE}
+# Code
+
+ggplot(Phenology, aes( x= Year, y= AnnualTemp)) + geom_point()
+
+
+```
+
+
+3. It looks like there might be a relationship between these two things. We'll check this with a *linear regression*. Use `stat_smooth` to add a regression to the plot. (5 pts)
+
+
+```{r, eval = FALSE}
+#Code
+
+ggplot(Phenology, aes( x= Year, y= AnnualTemp)) + stat_smooth(method = "lm", color="navy", size = 1, fill = "black")+theme_bw()
+
+```
+
+## Let's take a look at the actual butterflies.
+
+4) If butterflies emerge based on temperature, what would we expect to be the relationship between Spring temperature and day of emergence? Summer temperature and day of emergence? Year and day? Test all three out below. Which predictor (day, spring temp, summer temp) you think is most relevant? (10 points)
+
+```{r, eval=FALSE}
+#Code
+ggplot(Butterfly_ydtemp, mapping = aes(x = SpringTemp, y = Day )) + geom_point()
+
+ggplot(Butterfly_ydtemp, mapping = aes(x = SummerTemp, y = Day )) + geom_point() 
+
+ggplot(Butterfly_ydtemp, mapping = aes(x = Year, y = Day)) + geom_point()
+
+The predictor I think is the most relevant would be temperature in this casue I would think summer temps are the most relevant since butterflies emergence when temperatures get warmer. I would think that the response would be day to see the relationship of how the summer temperature effects the emergence of the butterfiles.
+```
+
+5) Is there a significant linear relationship between any predictors and the response? (10 pts)
+
+```{r}
+```
+#Answer here
+Here are the three plots that where tested abelow. The first graph looks to have no linear correlation. The secound graph has a negative linear correlation. The third graph is not linear.
+```
+# code here
+
+ggplot(Butterfly_ydtemp, mapping = aes(x = SpringTemp, y = Day )) + geom_point() + stat_smooth(method = "lm", color = "navy", size = 1, fill = "black")+ theme_bw()
+
+ggplot(Butterfly_ydtemp, mapping = aes(x = SummerTemp, y = Day )) + geom_point() + stat_smooth(method = "lm", color = "navy", size = 1, fill = "black")+ theme_bw()
+
+ggplot(Butterfly_ydtemp, mapping = aes(x = Year, y = Day )) + geom_point() + stat_smooth(method = "lm", color = "navy", size = 1, fill = "black")+ theme_bw()
+
+```
+
+6) It looks like different animals might have different relationships to the predictor variables. Try plotting them out as a facets (5 pts).
+
+```{r, eval=FALSE}
+#Code
+
+ggplot(Butterfly, mapping = aes(x = SummerTemp, y = Day)) + geom_point() + facet_wrap( ~ ButterflySpecies) + theme_bw() + theme(axis.text.x = element_text(colour = "grey20", size = 12),  axis.text.y = element_text(colour = "grey20", size = 12), text = element_text(size = 16))
+
+
+```
+
+7) Join our two datasets together and remake the facet plot above. Does this change your opinion of the relatedness of variables? (5 pts)
+
+
+```{r}
+Answer: After graphing AnnualTemp Vs. Day  from the combined data on it still shows how the different butterfly species have changed due to the change in temperature over time.
+
+#Code
+
+CombineBP <- merge(Butterfly, Phenology)
+CombineBP
+
+ggplot(CombineBP, mapping = aes(x = AnnualTemp, y = Day)) + geom_point() + facet_wrap( ~ ButterflySpecies) + theme_bw() + theme(axis.text.x = element_text(colour = "grey20", size = 12),  axis.text.y = element_text(colour = "grey20", size = 12), text = element_text(size = 16))
+
+
+```
+
+8) Wrap up: What is the relationship between temperature (remember that we looked at 3 kinds of temperature) and day of emergence? Is it the same for all species? How does this relate back to Kharouba and Vellend's hypotheses? (10 pts)
+
+
+```{r}
+#Answer here: 
+SpringTemp vs. Day has a negative correlation. SummerTemp vs. Day with stat_smooth also 
+looks to have a negative correlation. Year vs. day has a positive correlation.All three graphs don't have a linear relationship they all have sporadic coordinates. 
+There is a linear correlation in AnnualTemps vs. year which showed that temperature is changing over time. 
+When looking at the different species I put stat_smooth on the facet plot to see the relationship with AnnaulTemp vs. Day of emergence to see if there is a linear correlation for the different species over time since the temperature are getting hotter over time but there isn’t a correlation for any of the species. It relates to Kharouba and Vellend's hypotheses due to the fact that the environmental habitat is different for when they do emerge because temperatures are getting warmer over time according to the graph.For example, warmer temperature cause plants to bloom early resulting in the buuterflies and the environment not being in sync.
+
+ggplot(CombineBP, mapping = aes(x = AnnualTemp, y = Day)) + geom_point() + facet_wrap( ~ ButterflySpecies) + theme_bw() + theme(axis.text.x = element_text(colour = "grey20", size = 12),  axis.text.y = element_text(colour = "grey20", size = 12), text = element_text(size = 16)) +stat_smooth()
+
+
+```
+
+# Part Two. 30 points.
+
+For each of your function files, add to the .R:
+
++ Expected function inputs. For example, if you will be plotting a histogram, do you want a data frame as input? A dataframe and the name of the column you want to plot? 
+
+Answer: The dataframe I want to use is surveys. I want to plot weight, year, and species to see if there is a change of weight over time for each species. So, the columns I want to plot are weight, year, and  species. I've add some codes in the files that are in my R file the one that says PointPlot has what I described above. 
+
++ Expected outputs. Will your function return a plot? A single number? A vector of numbers? 
+
+Answer: My function is a point plot with a vectors of numbers.
+
+# Part Three. 15 points
+
+Add, commit, and push this file to your R_Package_LastName GitHub repo. Place this file in vignettes. Place the data in data/.
