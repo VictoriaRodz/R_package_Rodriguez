@@ -10,7 +10,7 @@ surveys_1 <- surveys %>%
 surveys_1
 
 is.na(surveys_1) == TRUE) {
-  return("Yep you got NA's in this data") 
+  return("TRUE - contains NA's") 
 }
 return(surveys_1)
 
