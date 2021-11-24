@@ -12,3 +12,11 @@ ggplot(data = surveys_1, mapping = aes(x = year, y = weight)) + geom_point()+ fa
 
 model_fit <- lm(weight ~ year, data = surveys_1)
 summary(model_fit)
+
+
+
+is_scalar_atomic(surveys_1) == FALSE) {
+  return("ERROR - the vector is not scalar") 
+}
+return(surveys_1)
+
