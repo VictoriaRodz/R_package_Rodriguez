@@ -7,11 +7,11 @@
 
 
 
-Test <- function(data, weight, year){
+ST <- function(data, weight, year){
  model_fit <- lm(weight ~ year, data = data)
  product <- summary(model_fit) 
  if (is.list(product) == FALSE ) {
- return("ERROR - object is not a data frame")
+ return("ERROR - Not a list")
 }
   return(product)
 }
