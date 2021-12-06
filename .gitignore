@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+RPackageRodriguez.Rcheck/
+RPackageRodriguez*.tar.gz
+RPackageRodriguez*.tgz
