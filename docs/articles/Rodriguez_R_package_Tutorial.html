@@ -83,7 +83,7 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Load in common library used for this package.</p>
+<p>loading the required packages ggplot2 and tidyverse.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
@@ -100,12 +100,12 @@
 <h2 id="now-we-install-my-package">Now, we install my package<a class="anchor" aria-label="anchor" href="#now-we-install-my-package"></a>
 </h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"VictoriaRodz/R_package_Rodriguez"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"VictoriaRodz/R_package_Rodriguez"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Downloading GitHub repo VictoriaRodz/R_package_Rodriguez@HEAD</span></code></pre>
 <pre><code>##   
-   checking for file ‘/tmp/RtmpOzrdXm/remotesec91dcd351b/VictoriaRodz-R_package_Rodriguez-09a7e0d/DESCRIPTION’ ...
+   checking for file ‘/tmp/Rtmp9E6I4G/remotes5175351d118/VictoriaRodz-R_package_Rodriguez-20219d2/DESCRIPTION’ ...
   
- [32m✓ [39m   [38;5;247mchecking for file ‘/tmp/RtmpOzrdXm/remotesec91dcd351b/VictoriaRodz-R_package_Rodriguez-09a7e0d/DESCRIPTION’ [39m [36m [39m
+ [32m✓ [39m   [38;5;247mchecking for file ‘/tmp/Rtmp9E6I4G/remotes5175351d118/VictoriaRodz-R_package_Rodriguez-20219d2/DESCRIPTION’ [39m [36m [39m
 ## 
   
  [38;5;247m─ [39m [38;5;247m   [39m [38;5;247mpreparing ‘RPackageRodriguez’: [39m [36m [39m
@@ -128,21 +128,20 @@
   
    
 ## </code></pre>
-<pre><code><span class="co">## Installing package into '/tmp/Rtmp0n8C5q/temp_libpath119102521f1'</span>
+<pre><code><span class="co">## Installing package into '/tmp/RtmpMcNCmq/temp_libpath1191d5a0b6f'</span>
 <span class="co">## (as 'lib' is unspecified)</span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPackageRodriguez</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="load-in-data">load in data<a class="anchor" aria-label="anchor" href="#load-in-data"></a>
+<h2 id="load-in-data">Load in data<a class="anchor" aria-label="anchor" href="#load-in-data"></a>
 </h2>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"https://ndownloader.figshare.com/files/2292169"</span>, destfile <span class="op">=</span> <span class="st">"data/surveys.csv"</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Warning in download.file(url = "https://ndownloader.figshare.com/files/</span>
-<span class="co">## 2292169", : URL https://ndownloader.figshare.com/files/2292169: cannot open</span>
-<span class="co">## destfile 'data/surveys.csv', reason 'No such file or directory'</span></code></pre>
-<pre><code><span class="co">## Warning in download.file(url = "https://ndownloader.figshare.com/files/</span>
-<span class="co">## 2292169", : download had nonzero exit status</span></code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"https://ndownloader.figshare.com/files/2292169"</span>, destfile <span class="op">=</span> <span class="st">"data/surveys.csv"</span><span class="op">)</span>
+
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"data/surveys.csv"</span><span class="op">)</span>
+
+<span class="va">data</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="working-example">Working Example<a class="anchor" aria-label="anchor" href="#working-example"></a>
@@ -152,6 +151,27 @@
 <li>Say something about why this is a good thing to do</li>
 <li>Say something about the expected output Do this for all 3</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="getting-rid-of-na-values">Getting rid of NA values<a class="anchor" aria-label="anchor" href="#getting-rid-of-na-values"></a>
+</h2>
+<p>NO.NA( ) function will get rid of NA values from a data frame. This function is a good thing because it will save you time.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/NO.NA.html">NO.NA</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="graph">Graph<a class="anchor" aria-label="anchor" href="#graph"></a>
+</h2>
+<p>Pointplot( ) function will graph a point plot with a fact_wrap.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/Pointplot.html">Pointplot</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="statistical-test">Statistical test<a class="anchor" aria-label="anchor" href="#statistical-test"></a>
+</h2>
+<p>ST( ) is a function for a statistical test.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/ST.html">ST</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, weight <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">weight</span>, year <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></code></pre></div>
 </div>
   </div>
 
