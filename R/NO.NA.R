@@ -2,7 +2,6 @@
 #' 
 #' @param data is a data frame
 #' @return product is the data frame without NA's
-#' @usage 
 #' @export
 
 

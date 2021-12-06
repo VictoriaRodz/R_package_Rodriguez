@@ -2,7 +2,6 @@
 #'
 #' @param data is the data frame without NA's
 #' @return product is a point plot with x as year and y as weight 
-#' @usage 
 #' @export 
 
 
