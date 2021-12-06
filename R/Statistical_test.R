@@ -4,6 +4,7 @@
 #' @param weight is a column in the data frame
 #' @param year is a column in the data frame
 #' @return product is a summary of model_fit 
+#' @usage 
 #' @export 
 
 
