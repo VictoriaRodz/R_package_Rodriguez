@@ -103,9 +103,9 @@
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"VictoriaRodz/R_package_Rodriguez"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Downloading GitHub repo VictoriaRodz/R_package_Rodriguez@HEAD</span></code></pre>
 <pre><code>##   
-   checking for file ‘/tmp/Rtmpj9N1Qv/remotes37a1addee27/VictoriaRodz-R_package_Rodriguez-4d21c2d/DESCRIPTION’ ...
+   checking for file ‘/tmp/RtmpO55h27/remotes2a239c14527/VictoriaRodz-R_package_Rodriguez-e7698d2/DESCRIPTION’ ...
   
- [32m✓ [39m   [38;5;247mchecking for file ‘/tmp/Rtmpj9N1Qv/remotes37a1addee27/VictoriaRodz-R_package_Rodriguez-4d21c2d/DESCRIPTION’ [39m [36m [39m
+ [32m✓ [39m   [38;5;247mchecking for file ‘/tmp/RtmpO55h27/remotes2a239c14527/VictoriaRodz-R_package_Rodriguez-e7698d2/DESCRIPTION’ [39m [36m [39m
 ## 
   
  [38;5;247m─ [39m [38;5;247m   [39m [38;5;247mpreparing ‘RPackageRodriguez’: [39m [36m [39m
@@ -128,17 +128,15 @@
   
    
 ## </code></pre>
-<pre><code><span class="co">## Installing package into '/tmp/RtmpfqyS5p/temp_libpath11939ce9a78'</span>
+<pre><code><span class="co">## Installing package into '/tmp/RtmphGYE2s/temp_libpath1198b79871'</span>
 <span class="co">## (as 'lib' is unspecified)</span></code></pre>
-<pre><code><span class="co">## Warning in i.p(...): installation of package '/tmp/Rtmpj9N1Qv/file37a5dcb0d84/</span>
-<span class="co">## RPackageRodriguez_0.0.0.9000.tar.gz' had non-zero exit status</span></code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPackageRodriguez</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="load-in-data">Load in data<a class="anchor" aria-label="anchor" href="#load-in-data"></a>
 </h2>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"https://ndownloader.figshare.com/files/2292169"</span>, destfile <span class="op">=</span> <span class="st">"data/surveys.csv"</span><span class="op">)</span>
 
 <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"data/surveys.csv"</span><span class="op">)</span>
@@ -149,21 +147,21 @@
 <h2 id="getting-rid-of-na-values">Getting rid of NA values<a class="anchor" aria-label="anchor" href="#getting-rid-of-na-values"></a>
 </h2>
 <p>NO.NA( ) function will get rid of NA values from a data frame. This function is a good thing because it will save you time.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/NO.NA.html">NO.NA</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="graph">Graph<a class="anchor" aria-label="anchor" href="#graph"></a>
 </h2>
 <p>Pointplot( ) function will graph a point plot with a facet_wrap. This function is interesting because you can look visually at the linear relationship between the predictor and response.The example below shows the relationship of weight over the years for each genus.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/Pointplot.html">Pointplot</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="statistical-test">Statistical test<a class="anchor" aria-label="anchor" href="#statistical-test"></a>
 </h2>
 <p>ST( ) is a function for a statistical test. The function ST( ) is useful because it gives you a regression of the data.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ST.html">ST</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, weight <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">weight</span>, year <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></code></pre></div>
 </div>
   </div>
